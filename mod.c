@@ -13,7 +13,7 @@ int cgiMain()
 
 	char stuId[20] = "\0";
 
-	char majorId[20] = "\0";
+	char stutel[20] = "\0";
 
 	int status = 0;
 
@@ -35,10 +35,10 @@ int cgiMain()
 
 
 
-	status = cgiFormString("majorId",  majorId, 20);
+	status = cgiFormString("stutel",  stutel, 20);
 	if (status != cgiFormSuccess)
 	{
-		fprintf(cgiOut, "get majorId error!\n");
+		fprintf(cgiOut, "get stutel error!\n");
 		return 1;
 	}
 
@@ -67,7 +67,7 @@ int cgiMain()
 	}
 
 
-	sprintf(sql, "update information set stuname='%s',majorId=%d where stuId = %d ", stuname,atoi(majorId), atoi(stuId));
+	sprintf(sql, "update information set stuname='%s',stutel=%d where stuId = %d ", stuname,atoi(stutel), atoi(stuId));
 
 
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)

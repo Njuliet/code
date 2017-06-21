@@ -59,6 +59,12 @@
             <div class="text-center col-md-3 col-sm-6">
                 <button>删除学生信息</button>
             </div>
+            <div class="text-center col-md-3 col-sm-6">
+                <button>隐藏学生信息</button>
+            </div>
+            <div class="text-center col-md-3 col-sm-6">
+                <button>恢复隐藏学生信息</button>
+            </div>
         </div>
         <ul class="forms">
             <li class="show">
@@ -189,9 +195,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="stuId-mod" class="col-sm-2 control-label">学生专业号</label>
+                        <label for="stuId-mod" class="col-sm-2 control-label">学生电话号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="majorId" class="form-control" id="majorId-mod" placeholder="请输入学生专业号">
+                            <input type="text" name="stutel" class="form-control" id="stutel-mod" placeholder="请输入学生电话号">
                         </div>
                     </div>
 
@@ -205,6 +211,34 @@
                 <form class="form-horizontal" method="get" action="/cgi-bin/sx/del.cgi">
                     <div class="form-group">
                         <label for="stuId-del" class="col-sm-2 control-label">输入要删除的学生Id</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuId" class="form-control" id="stuId-del" placeholder="输入学生Id">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/hide.cgi">
+                    <div class="form-group">
+                        <label for="stuId-del" class="col-sm-2 control-label">输入要隐藏的学生Id</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuId" class="form-control" id="stuId-del" placeholder="输入学生Id">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/recover.cgi">
+                    <div class="form-group">
+                        <label for="stuId-del" class="col-sm-2 control-label">输入恢复删除的学生Id</label>
                         <div class="col-sm-10">
                             <input type="text" name="stuId" class="form-control" id="stuId-del" placeholder="输入学生Id">
                         </div>
