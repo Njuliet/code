@@ -36,11 +36,11 @@ int cgiMain()
 
 	if (stuname[0] == '*')
 	{
-		sprintf(sql, "select * from information");
+		sprintf(sql, "select distinct information.stuId,stuname,stuage,stutel,stusex course.courseId,coursename,credit,stuscore from information,course,score where information.stuId=course.courseId");
 	}
 	else
 	{
-		sprintf(sql, "select * from information where stuname = '%s'", stuname);
+		sprintf(sql, "select distinct information.stuId,information.stuname,information.stuage,information.stutel,information.stusex course.courseId,course.coursename,course.credit,score.stuId,score.courseId,score.stuscore from information where stuname = '%s' and information.stuId=course.courseId", stuname);
 	}
 
 

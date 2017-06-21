@@ -1,12 +1,12 @@
 CC=gcc
 AFLAGS=-Wall -g
 LDFLAGS= -lmysqlclient
-OBJS= add.cgi del.cgi mod.cgi sel.cgi
+OBJS= add.cgi del.cgi mod.cgi sel.cgi addcourse.cgi addscore.cgi
 
 all:$(OBJS)
 
 $(OBJS):%.cgi:%.c
-	$(CC) $(AFLAGS) $< cgic.c -o $@ $(LDFLAGS)	
+	$(CC) $(AFLAGS) $< cgic.c -o $@ $(LDFLAGS)
 
 .PHONY:clean
 clean:

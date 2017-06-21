@@ -10,12 +10,13 @@ int cgiMain()
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 
 	char stuname[20] = "\0";
-	char  majorId[20] = "\0";
 	char  stuId[20] = "\0";
 	char stutel[30]="\0";
 	char  stuage[20]="\0";
 	char stusex[20]="\0";
 	int status = 0;
+
+
 
 	status = cgiFormString("stuname",  stuname, 20);
 	if (status != cgiFormSuccess)
@@ -38,12 +39,6 @@ int cgiMain()
 		return 1;
 	}
 
-	status = cgiFormString("majorId",  majorId, 20);
-	if (status != cgiFormSuccess)
-	{
-		fprintf(cgiOut, "get majorId error!\n");
-		return 1;
-	}
 
 	status = cgiFormString("stusex",  stusex, 20);
 	if (status != cgiFormSuccess)
@@ -60,7 +55,7 @@ int cgiMain()
 	}
 
 	//fprintf(cgiOut, "stuname = %s, stuage = %s, stuId = %s,stutel=%s,stusex=%s,majorId=%s\n", stuname, stuage, stuId,stutel,stusex,majorId);
-	int ret;
+	//int ret;
 	char sql[1280] = "\0";
 	MYSQL *db;
 
@@ -83,7 +78,7 @@ int cgiMain()
 
 
 
-	strcpy(sql, "create table information(stuId int not null primary key, stuname varchar(20) not null, stuage int not null,stutel varchar(30) not null,majorId int not null,stusex varchar(20) not null)");
+	/*strcpy(sql, "create table information(stuId int not null primary key, stuname varchar(20) not null, stuage int not null,stutel varchar(30) not null,majorId int not null,stusex varchar(20) not null)");
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		if (ret != 1)
@@ -94,9 +89,9 @@ int cgiMain()
 		}
 	}
 
+*/
 
-
-	sprintf(sql, "insert into information values(%d,'%s','%s',%d,%d,'%s')",atoi(stuId),stuname,stutel,atoi(majorId),atoi(stuage),stusex);
+	sprintf(sql, "insert into information values(%d,'%s','%s',%d,'%s')",atoi(stuId),stuname,stutel,atoi(stuage),stusex);
 	if (mysql_real_query(db, sql, strlen(sql) + 1) != 0)
 	{
 		fprintf(cgiOut, "%s\n", mysql_error(db));

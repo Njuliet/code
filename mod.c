@@ -10,11 +10,11 @@ int cgiMain()
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 
 	char stuname[20] = "\0";
-	char stuage[20] = "\0";
+
 	char stuId[20] = "\0";
-	char stutel[30] = "\0";
+
 	char majorId[20] = "\0";
-	char stusex[20] = "\0";
+
 	int status = 0;
 
 	status = cgiFormString("stuname",  stuname, 20);
@@ -24,12 +24,7 @@ int cgiMain()
 		return 1;
 	}
 
-	status = cgiFormString("stuage",  stuage, 20);
-	if (status != cgiFormSuccess)
-	{
-		fprintf(cgiOut, "get age error!\n");
-		return 1;
-	}
+
 
 	status = cgiFormString("stuId",  stuId, 20);
 	if (status != cgiFormSuccess)
@@ -38,12 +33,7 @@ int cgiMain()
 		return 1;
 	}
 
-	status = cgiFormString("stutel",  stutel, 20);
-	if (status != cgiFormSuccess)
-	{
-		fprintf(cgiOut, "get stutel error!\n");
-		return 1;
-	}
+
 
 	status = cgiFormString("majorId",  majorId, 20);
 	if (status != cgiFormSuccess)
@@ -52,12 +42,7 @@ int cgiMain()
 		return 1;
 	}
 
-	status = cgiFormString("stusex",  stusex, 20);
-	if (status != cgiFormSuccess)
-	{
-		fprintf(cgiOut, "get stusex error!\n");
-		return 1;
-	}
+
 	//fprintf(cgiOut, "name = %s, age = %s, stuId = %s\n", name, age, stuId);
 
 	int ret;
@@ -82,7 +67,7 @@ int cgiMain()
 	}
 
 
-	sprintf(sql, "update information set stuname='%s', stuage= %d,stutel='%s',stusex='%s',majorId=%d where stuId = %d ", stuname, atoi(stuage),stutel,stusex,atoi(majorId), atoi(stuId));
+	sprintf(sql, "update information set stuname='%s',majorId=%d where stuId = %d ", stuname,atoi(majorId), atoi(stuId));
 
 
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
