@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <mysql/mysql.h>
 #include "cgic.h"
+char * headname = "head.html";
+char * footname = "footer.html";
 
 int cgiMain()
 {
 
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
-
+FILE * fd;
 	char stuname[20] = "\0";
 
 	char stuId[20] = "\0";
@@ -16,6 +18,19 @@ int cgiMain()
 	char stutel[20] = "\0";
 
 	int status = 0;
+char ch;
+
+if(!(fd = fopen(headname, "r"))){
+	fprintf(cgiOut, "Cannot open file, %s\n", headname);
+	return -1;
+}
+ch = fgetc(fd);
+
+while(ch != EOF){
+	fprintf(cgiOut, "%c", ch);
+	ch = fgetc(fd);
+}
+fclose(fd);
 
 	status = cgiFormString("stuname",  stuname, 20);
 	if (status != cgiFormSuccess)
@@ -79,7 +94,7 @@ int cgiMain()
 
 
 
-	fprintf(cgiOut, "update student ok!\n");
+	fprintf(cgiOut, "修改学生信息成功!\n");
 	mysql_close(db);
 	return 0;
 }

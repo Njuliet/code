@@ -113,7 +113,7 @@ fclose(fd);
 		return -1;
 	}
 
-	fprintf(cgiOut, "add student ok!\n");
+	fprintf(cgiOut, "添加学生信息成功!\n");
 	mysql_close(db);
 	return 0;
 }
