@@ -10,7 +10,7 @@ char * footname = "footer.html";
 int cgiMain()
 {
 
-	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
+	//fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
   FILE * fd;
 	char stuname[20] = "\0";
 	char  stuId[20] = "\0";
